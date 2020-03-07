@@ -1,4 +1,3 @@
-
 const CACHE = "pwabuilder-offline-page";
 
 const offlineFallbackPage = "ToDo-replace-this-name.html";
