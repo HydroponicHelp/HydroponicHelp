@@ -1,4 +1,4 @@
-// This is the service worker with the combined offline experience (Offline page + Offline copy of pages)
+// This is the "Offline copy of pages" service worker
 
 // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
 
