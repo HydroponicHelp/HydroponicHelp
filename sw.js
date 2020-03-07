@@ -1,0 +1,2 @@
+‘use strict’;
+importScripts(‘sw-toolbox.js’); toolbox.precache([“index.html”,”generic.html”,”generic2.html”,”generic3.html”,”/images/pic1.jpg”,”/images/pic2.png”,”/images/pic3.jpg”,”/images/pic4.png”,”/assets/css/images/intro.svg”,”/assets/css/fontawesome-all.min.css”,”/assets/css/main.css”,”/assets/css/noscript.css”,”/assets/js/noscript.css”]); toolbox.router.get(‘/images/*’, toolbox.cacheFirst); toolbox.router.get(‘/*’, toolbox.networkFirst, { networkTimeoutSeconds: 5});

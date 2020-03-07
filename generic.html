@@ -1,0 +1,459 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Калькулятор рецепта питательного раствора по профилю</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Гидропоника в помощь</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Домой</a></li>
+						<li><a href="generic2.html">Основная информация</a></li>
+						<li><a href="generic.html" class="active">Калькулятор</a></li>
+						<li><a href="generic3.html">Профили и дополнительная информация</a></li>
+					</ul>
+				</nav>
+			</header>
+    <h2 align="center">Калькулятор рецепта питательного раствора по профилю</h2>
+		<p>Данный калькулятор позволит самостоятельно расчитать рецепт питательного раствора для вашего растения. Для расчета вам необходимо иметь профиль питания растения. В качестве примера забит профиль для томатов.</p>
+		<div>
+		<a onclick="hidetxt('div1'); return false;" href="#" rel="nofollow">Как пользоваться?</a>
+		<div style="display:none;" id="div1">
+			<ul>
+		<li>В таблице профиля вам необходимо указать профиль питания вашего растения. Сделать это нужно в первой строке.</li>
+		<li>В первой строке таблицы соотношений у вас появится расчет соотношений элементов необходимый для конечного расчета количества нужных вам солей.</li>
+		<li>Во второй строке таблицы соотношений вам необходимо либо скопировать соотношения первой строки, либо произвести корректировку на ваше усмотрение.</li>
+		<li>Во второй строке таблицы профиля вы можете посмотреть профиль, который получится при смешивании настоящих солей.</li>
+		<li>Затем вам нужно выбрать необходимое количество раствора.</li>
+		<li>В таблице микроэлементов, вы можете установить свои значения для корректировки питания.</li>
+		<li>Выберите в каком соотношении будет замешиваться концентрат для приготовления раствора. И введите желаемый объем для емкостей содержащих раствор.</li>
+		<li>Далее вы увидите количество необходимых солей для приготовления раствора по вашему профилю и рекомендации.</li>
+			</ul>
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<a onclick="hidetxt('div2'); return false;" href="#" rel="nofollow">Какие элементы блокируют друг друга при избытке.</a>
+		<div style="display:none;" id="div2">
+			<ul>
+		<li>Калий блокирует: Кальций, Магний</li>
+		<li>Магний блокирует: Кальций</li>
+		<li>Кальций блокирует: Азот, Калий</li>
+			</ul>
+		</div>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<a onclick="hidetxt('div3'); return false;" href="#" rel="nofollow">Помощь по соотношениям.</a>
+		<div style="display:none;" id="div3">
+			<ul>
+		<li>Данные рекомендации не являются обязательными и основаны на наблюдениях.</li>
+		<li>K:Mg < 10 </li>
+		<li>1 < K:Ca < 2</li>
+		<li>N:Ca < 1.5 </li>
+		<li>K:Ca >= N:Ca</li>
+			</ul>
+		</div>
+		</div>
+		<br>
+		<!-- Wrapper -->
+		<form oninput="nitroprofil()">
+		<h4>Таблица профиля</h4>
+		<table class="alt">
+		<tr>
+		<th>N</th>
+		<th>NO3</th>
+		<th>NH4</th>
+		<th>P</th>
+		<th>K</th>
+		<th>Ca</th>
+		<th>Mg</th>
+		<th>S</th>
+		<th>Cl</th>
+		</tr>
+		<tr>
+		<td><span size="3" maxlength="3" id="Ni">184</span></td>
+		<td><input type="text" value="173" size="1" maxlength="3" id="NO3i"></td>
+		<td><input type="text" value="11" size="1" maxlength="2" id="NH4i"></td>
+		<td><input type="text" value="50" size="1" maxlength="2" id="Pi"></td>
+		<td><input type="text" value="370" size="1" maxlength="3" id="Ki"></td>
+		<td><input type="text" value="205" size="1" maxlength="3" id="Cai"></td>
+		<td><input type="text" value="46" size="1" maxlength="2" id="Mgi"></td>
+		<td><input type="text" value="166" size="1" maxlength="2" id="S"></td>
+		<td><input type="text" value="0" size="1" maxlength="2" id="Cl"></td>
+		</tr>
+		<tr>
+		<td><span size="3" maxlength="1" id="Nk">185</span></td>
+		<td><span size="3" maxlength="1" id="NO3k">174</span></td>
+		<td><span size="3" maxlength="1" id="NH4k">11</span></td>
+		<td><span size="3" maxlength="1" id="Pk">50</span></td>
+		<td><span size="3" maxlength="1" id="Kk">370</span></td>
+		<td><span size="3" maxlength="1" id="Cak">206</span></td>
+		<td><span size="3" maxlength="1" id="Mgk">46</span></td>
+		<td><span size="3" maxlength="1" id="Sk">165</span></td>
+		<td><span size="3" maxlength="1" id="Clk">0</span></td>
+		</tr>
+		</table>
+		<br>
+		<h4>Таблица соотношений элементов</h4>
+		<table class="alt">
+		<tr>
+		<th>EC</th>
+		<th>K:Mg</th>
+		<th>K:Ca</th>
+		<th>N:Ca</th>
+		<th>NH4:NO3</th>
+		<th>P</th>
+		<th>Cl</th>
+		</tr>
+		<tr>
+		<td><span size="3" maxlength="3" id="ECi">2.50</span></td>
+		<td><span size="3" maxlength="3" id="KMGi">8.04</span></td>
+		<td><span size="3" maxlength="3" id="KCAi">1.80</span></td>
+		<td><span size="3" maxlength="3" id="NCAi">0.90</span></td>
+		<td><span size="3" maxlength="3" id="NH4NO3i">6.36</span></td>
+		<td><span size="3" maxlength="3" id="Pso">50</span></td>
+		<td><span size="3" maxlength="3" id="Clo">0</span></td>
+		</tr>
+		<tr>
+		<td><input type="text" size="3" value="2.50" maxlength="4" id="ECK"></span></td>
+		<td><input type="text" size="3" value="8.04" maxlength="4" id="KMGK"></td>
+		<td><input type="text" size="2" value="1.80" maxlength="4" id="KCAK"></td>
+		<td><input type="text" size="2" value="0.90" maxlength="4" id="NCAK"></td>
+		<td><input type="text" size="3" value="6.36" maxlength="4" id="NH4NO3K"></td>
+		<td><input type="text" size="3" value="50" maxlength="4" id="PsoK"></td>
+		<td><input type="text" size="2" value="0" maxlength="4" id="CloK"></td>
+		</tr>
+		</table>
+		<br>
+		<p> Сколько вам надо раствора =<input type="text" value="20" size="1" maxlength="4" id="Volu">л.</p>
+		<h4>Таблица макроэлементов</h4>
+		<table class="alt">
+		<tr>
+		<th>Название соли</th>
+		<th>Артикул соли</th>
+		<th>г/л</th>
+		<th>ppm</th>
+		<th>грамм</th>
+		<th>конц г/л</th>
+		<th>мл</th>
+		<th>процент чистыми атомами</th>
+		<th>расхождение</th>
+		</tr>
+		<tr>
+		<td>Магний сернокислый 7-водный, хч</td>
+		<td>10034-99-8хч</td>
+		<td><span id="Gl1"></span></td>
+		<td><span id="Ppm1"></span></td>
+		<td><span id="Gramm1"></span></td>
+		<td><input type="text" size="1" maxlength="4" value="350" id="Konc1"></td>
+		<td><span id="Ml1"></span></td>
+		<td>Mg:<input type="text" size="3" maxlength="7" value="9.8611" id="Mga">% S:<input type="text" size="3" maxlength="7" value="13.0095" id="Sma">%</td>
+		<td><span id="Rash1"></span></td>
+		</tr>
+		<tr>
+		<td>Калий сернокислый безводный, хч</td>
+		<td>7757-82-6хч</td>
+		<td><span id="Gl2"></span></td>
+		<td><span id="Ppm2"></span></td>
+		<td><span id="Gramm2"></span></td>
+		<td><input type="text" size="1" maxlength="4" value="100" id="Konc2"></td>
+		<td><span id="Ml2"></span></td>
+		<td>K:<input type="text" size="3" maxlength="7" value="44.8737" id="Ka">%  S:<input type="text" size="3" maxlength="7" value="18.4008" id="Ska">%</td>
+		<td><span id="Rash2"></span></td>
+		</tr>
+		<tr>
+		<td>Калий азотнокислый, хч</td>
+		<td>7757-79-1</td>
+		<td><span id="Gl3"></span></td>
+		<td><span id="Ppm3"></span></td>
+		<td><span id="Gramm3"></span></td>
+		<td><input type="text" size="1" maxlength="4" value="200" id="Konc3"></td>
+		<td><span id="Ml3"></span></td>
+		<td>K:<input type="text" size="3" maxlength="7" value="38.6717" id="Kna">%  NO3:<input type="text" size="3" maxlength="7" value="13.8539" id="NO3ka">%</td>
+		<td><span id="Rash3"></span></td>
+		</tr>
+		<tr>
+		<td>Калий фосфорнокислый 1-замещенный, хч</td>
+		<td>7778-77-0хч</td>
+		<td><span id="Gl4"></span></td>
+		<td><span id="Ppm4"></span></td>
+		<td><span id="Gramm4"></span></td>
+		<td><input type="text" size="1" maxlength="4" value="150" id="Konc4"></td>
+		<td><span id="Ml4"></span></td>
+		<td>K:<input type="text" size="3" maxlength="7" value="28.7307" id="Kpa">%  P:<input type="text" size="3" maxlength="7" value="22.7605" id="Pka">%</td>
+		<td><span id="Rash4"></span></td>
+		</tr>
+		<tr>
+		<td>Кальций азотнокислый 4-водный, ч</td>
+		<td>15245-12-2в</td>
+		<td><span id="Gl5"></span></td>
+		<td><span id="Ppm5"></span></td>
+		<td><span id="Gramm5"></span></td>
+		<td><input type="text" size="1" maxlength="4" value="700" id="Konc5"></td>
+		<td><span id="Ml5"></span></td>
+		<td>Ca:<input type="text" size="3" maxlength="7" value="16.9715" id="Caa">% NO3:<input type="text" size="3" maxlength="7" value="11.8626" id="NO3caa">% <br> NH4:<input type="text" size="3" maxlength="7" value="0" id="NH4caa">%</td>
+		<td><span id="Rash5"></span></td>
+		</tr>
+		<tr>
+		<td>Аммоний азотнокислый, чда</td>
+		<td>6484-52-2</td>
+		<td><span id="Gl6"></span></td>
+		<td><span id="Ppm6"></span></td>
+		<td><span id="Gramm6"></span></td>
+		<td><input type="text" size="1" maxlength="4" value="450" id="Konc6"></td>
+		<td><span id="Ml6"></span></td>
+		<td>NH4:<input type="text" size="3" maxlength="7" value="17.4989" id="NH4a">% NO3:<input type="text" size="3" maxlength="7" value="17.4989" id="NO3nh4a">%</td>
+		<td><span id="Rash6"></span></td>
+		</tr>
+		</table>
+		<br>
+		<h4>Таблица микроэлементов</h4>
+		<table class="alt">
+		<tr>
+		<th>Название элемента</th>
+		<th>Артикул элемента</th>
+		<th>мг/л</th>
+		<th>Доля</th>
+		<th>г/л</th>
+		<th>ppm</th>
+		<th>грамм</th>
+		<th>конц г/л</th>
+		<th>мл</th>
+		</tr>
+		<tr>
+		<td>Железная соль Трилона Б, 2х водный (Fe)</td>
+		<td>6-09-2391-77</td>
+		<td><input type="text" size="1" maxlength="4" value="2" id="Mgl1"></td>
+		<td><input type="text" size="3" maxlength="7" value="13.8547" id="Dol1">%</td>
+		<td><span id="Gramlitr1"></span></td>
+		<td><span id="Ppmm1"></span></td>
+		<td><span id="Grams1"></span></td>
+		<td><input type="text" size="1" maxlength="7" value="100" id="Konc7"></td>
+		<td><span id="Milli1"></span></td>
+		</tr>
+		<tr>
+		<td>Марганец (2) сернокислый 1-водный, ч (Mn)</td>
+		<td>10034-96-5</td>
+		<td><input type="text" size="1" maxlength="4" value="0.55" id="Mgl2"></td>
+		<td><input type="text" size="3" maxlength="7" value="32.5047" id="Dol2">%</td>
+		<td><span id="Gramlitr2"></span></td>
+		<td><span id="Ppmm2"></span></td>
+		<td><span id="Grams2"></span></td>
+		<td><input type="text" size="1" maxlength="7" value="10" id="Konc8"></td>
+		<td><span id="Milli2"></span></td>
+		</tr>
+		<tr>
+		<td>Борная кислота, хч (B)</td>
+		<td>10043-35-3хч</td>
+		<td><input type="text" size="1" maxlength="4" value="0.35" id="Mgl3"></td>
+		<td><input type="text" size="3" maxlength="7" value="17.4842" id="Dol3">%</td>
+		<td><span id="Gramlitr3"></span></td>
+		<td><span id="Ppmm3"></span></td>
+		<td><span id="Grams3"></span></td>
+		<td><input type="text" size="1" maxlength="7" value="10" id="Konc9"></td>
+		<td><span id="Milli3"></span></td>
+		</tr>
+		<tr>
+		<td>Цинк сернокислый 7-водный, хч (Zn)</td>
+		<td>7446-20-0хч</td>
+		<td><input type="text" size="1" maxlength="4" value="0.33" id="Mgl4"></td>
+		<td><input type="text" size="3" maxlength="7" value="22.737" id="Dol4">%</td>
+		<td><span id="Gramlitr4"></span></td>
+		<td><span id="Ppmm4"></span></td>
+		<td><span id="Grams4"></span></td>
+		<td><input type="text" size="1" maxlength="7" value="10" id="Konc10"></td>
+		<td><span id="Milli4"></span></td>
+		</tr>
+		<tr>
+		<td>Медь (2) сернокислая 5-водная, чда (Cu)</td>
+		<td>7758-98-7</td>
+		<td><input type="text" size="1" maxlength="4" value="0.05" id="Mgl5"></td>
+		<td><input type="text" size="3" maxlength="7" value="25.4505" id="Dol5">%</td>
+		<td><span id="Gramlitr5"></span></td>
+		<td><span id="Ppmm5"></span></td>
+		<td><span id="Grams5"></span></td>
+		<td><input type="text" size="1" maxlength="7" value="1" id="Konc11"></td>
+		<td><span id="Milli5"></span></td>
+		</tr>
+		<tr>
+		<td>Аммоний молибденовокислый, чда (Mo)</td>
+		<td>12054-85-2чда</td>
+		<td><input type="text" size="1" maxlength="4" value="0.05" id="Mgl6"></td>
+		<td><input type="text" size="3" maxlength="7" value="54.3464" id="Dol6">%</td>
+		<td><span id="Gramlitr6"></span></td>
+		<td><span id="Ppmm6"></span></td>
+		<td><span id="Grams6"></span></td>
+		<td><input type="text" size="1" maxlength="7" value="1" id="Konc12"></td>
+		<td><span id="Milli6"></span></td>
+		</tr>
+		</table>
+		<h3>Концентраты для разведения в двух емкостях</h3>
+		<br>
+		<p>В каком соотношении будет концентрированный раствор =<input type="text" value="200" size="1" maxlength="4" id="Koncentrat">:1</p>
+		<br>
+		<p> Объем емкостей для концентрированного раствора =<input type="text" value="1000" size="1" maxlength="4" id="Volkoncentrat">мл.</p>
+		<br>
+		<h4>Первая емкость</h4>
+		<table class="alt">
+			<tr>
+				<th>Название</th>
+				<th>Артикул</th>
+				<th>грамм</th>
+				<th>мл.</th>
+				<th>цена</th>
+				<th>стоимость за грамм</th>
+			</tr>
+			<tr>
+				<td>Магний сернокислый 7-водный, хч</td>
+				<td>10034-99-8хч</td>
+				<td><span id="Gramkonc1">0</span></td>
+				<td><span id="Millikonc1"></span></td>
+				<td><span id="Price1"></span></td>
+				<td><input type="text" size="1" maxlength="7" value="0.2" id="Priceg1"> руб.</td>
+			</tr>
+			<tr>
+				<td>Калий сернокислый безводный, хч</td>
+				<td>7757-82-6хч</td>
+				<td><span id="Gramkonc2"></span></td>
+				<td><span id="Millikonc2"></span></td>
+				<td><span id="Price2"></span></td>
+				<td><input type="text" size="1" maxlength="7" value="0.32" id="Priceg2"> руб.</td>
+			</tr>
+			<tr>
+				<td>Калий фосфорнокислый 1-замещенный, хч</td>
+				<td>7778-77-0хч</td>
+				<td><span id="Gramkonc3"></span></td>
+				<td><span id="Millikonc3"></span></td>
+				<td><span id="Price3"></span></td>
+				<td><input type="text" size="1" maxlength="7" value="0.5" id="Priceg3"> руб.</td>
+			</tr>
+			<tr>
+				<td>Железная соль Трилона Б, 2х водный (Fe)</td>
+				<td>6-09-2391-77</td>
+				<td><span id="Gramkonc4"></span></td>
+				<td><span id="Millikonc4"></span></td>
+				<td><span id="Price4"></span></td>
+				<td><input type="text" size="1" maxlength="7" value="4" id="Priceg4"> руб.</td>
+			</tr>
+			<tr>
+				<td>Марганец (2) сернокислый 1-водный, ч (Mn)</td>
+				<td>10034-96-5</td>
+				<td><span id="Gramkonc5"></span></td>
+				<td><span id="Millikonc5"></span></td>
+				<td><span id="Price5"></span></td>
+				<td><input type="text" size="1" maxlength="7" value="0.3" id="Priceg5"> руб.</td>
+			</tr>
+			<tr>
+				<td>Борная кислота, хч (B)</td>
+				<td>10043-35-3хч</td>
+				<td><span id="Gramkonc6"></span></td>
+				<td><span id="Millikonc6"></span></td>
+				<td><span id="Price6"></span></td>
+				<td><input type="text" size="1" maxlength="7" value="0.5" id="Priceg6"> руб.</td>
+			</tr>
+			<tr>
+				<td>Цинк сернокислый 7-водный, хч (Zn)</td>
+				<td>7446-20-0хч</td>
+				<td><span id="Gramkonc7"></span></td>
+				<td><span id="Millikonc7"></span></td>
+				<td><span id="Price7"></span></td>
+				<td><input type="text" size="1" maxlength="7" value="0.2" id="Priceg7"> руб.</td>
+			</tr>
+			<tr>
+				<td>Медь (2) сернокислая 5-водная, чда (Cu)</td>
+				<td>7758-98-7</td>
+				<td><span id="Gramkonc8"></span></td>
+				<td><span id="Millikonc8"></span></td>
+				<td><span id="Price8"></span></td>
+				<td><input type="text" size="1" maxlength="7" value="0.4" id="Priceg8"> руб.</td>
+			</tr>
+			<tr>
+				<td>Аммоний молибденовокислый, чда (Mo)</td>
+				<td>12054-85-2чда</td>
+				<td><span id="Gramkonc9"></span></td>
+				<td><span id="Millikonc9"></span></td>
+				<td><span id="Price9"></span></td>
+				<td><input type="text" size="1" maxlength="7" value="4" id="Priceg9"> руб.</td>
+			</tr>
+		</table>
+		<br>
+		<h4>Вторая емкость</h4>
+		<table class="alt">
+			<tr>
+				<th>Название</th>
+				<th>Артикул</th>
+				<th>грамм</th>
+				<th>мл.</th>
+				<th>цена</th>
+				<th>стоимость за грамм</th>
+			</tr>
+			<tr>
+				<td>Калий азотнокислый, хч</td>
+				<td>7757-79-1</td>
+				<td><span id="Gramkonc10"></span></td>
+				<td><span id="Millikonc10"></span></td>
+				<td><span id="Price10"></span></td>
+				<td><input type="text" size="1" maxlength="7" value="0.4" id="Priceg10"> руб.</td>
+			</tr>
+			<tr>
+				<td>Кальций азотнокислый 4-водный, ч</td>
+				<td>15245-12-2в</td>
+				<td><span id="Gramkonc11"></span></td>
+				<td><span id="Millikonc11"></span></td>
+				<td><span id="Price11"></span></td>
+				<td><input type="text" size="1" maxlength="7" value="0.4" id="Priceg11"> руб.</td>
+			</tr>
+			<tr>
+				<td>Аммоний азотнокислый, чда</td>
+				<td>6484-52-2</td>
+				<td><span id="Gramkonc12"></span></td>
+				<td><span id="Millikonc12"></span></td>
+				<td><span id="Price12"></span></td>
+				<td><input type="text" size="1" maxlength="7" value="0.25" id="Priceg12"> руб.</td>
+			</tr>
+		</table>
+		<br>
+		<p> На <span id="Volume"></span> раствора, добавить по <span id="Rashod"></span> мл. из каждой емкости.</p>
+		<p> Готового концентрата хватит на <span id="Litre"></span> литров или на <span id="Razi"></span> раз.</p>
+		<p> Скачать получившийся расчет для покупки необходимых компонентов. <a download="Raschet.txt" id="test" href="#">Raschet.txt</a></p>
+		<script src="assets/js/calculator.js"></script>
+				</form>
+				<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/base64.js"></script>
+<script>
+var show;
+function hidetxt(type){
+ param=document.getElementById(type);
+ if(param.style.display == "none") {
+ if(show) show.style.display = "none";
+ param.style.display = "block";
+ show = param;
+ }else param.style.display = "none"
+}
+</script>
+	</body>
+</html>
