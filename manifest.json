@@ -2,7 +2,7 @@
     "dir": "ltr",
     "lang": "Russian",
     "name": "HydroponicsHelp",
-    "scope": "/index.html",
+    "scope": "/",
     "display": "fullscreen",
     "start_url": "/",
     "short_name": "HydroHelp",
