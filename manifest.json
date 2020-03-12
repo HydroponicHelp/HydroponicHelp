@@ -4,7 +4,7 @@
     "name": "HydroponicsHelp",
     "scope": "/",
     "display": "fullscreen",
-    "start_url": "\/",
+    "start_url": "/",
     "short_name": "HydroHelp",
     "theme_color": "transparent",
     "description": "",
