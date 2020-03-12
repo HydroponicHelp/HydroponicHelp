@@ -1,0 +1,3 @@
+User-agent:*
+Disallow:
+Sitemap: https://hydroponichelp.github.io/Hydroponics/sitemap.xml
