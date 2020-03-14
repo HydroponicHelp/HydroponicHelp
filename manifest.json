@@ -6,7 +6,7 @@
     "display": "fullscreen",
     "start_url": "https://hydroponichelp.github.io/index.html",
     "short_name": "HydroHelp",
-    "theme_color": "transparent",
+    "theme_color": "#312450",
     "description": "",
     "orientation": "landscape",
     "background_color": "#312450",
