@@ -4,7 +4,7 @@
     "name": "HydroponicsHelp",
     "scope": "/",
     "display": "fullscreen",
-    "start_url": "/Hydroponics/index.html",
+    "start_url": "/index.html",
     "short_name": "HydroHelp",
     "theme_color": "transparent",
     "description": "",
@@ -50,6 +50,6 @@
      "density": "4.0"
     }
   ],
-    "url": "https://hydroponichelp.github.io/Hydroponics/index.html",
+    "url": "https://hydroponichelp.github.io/index.html",
     "screenshots": []
 }
